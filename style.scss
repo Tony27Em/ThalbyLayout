@@ -502,7 +502,7 @@ $adaptive-padding-side: 40px;
         
         .menu {
             width: 0;
-            height: 100vh;
+            height: 100%;
             display: none;
             position: fixed;
             top: 0;
@@ -516,11 +516,13 @@ $adaptive-padding-side: 40px;
 
         & .nav-soc {
             width: 0;
-            height: max-content;
+            height: 100%;
+            padding-bottom: 50px;
             display: none;
             position: fixed;
             left: 0;
-            bottom: 50px;
+            // bottom: 50px;
+            bottom: 0;
             background-color: transparent;            
             backdrop-filter: blur(0);
             z-index: 998;
@@ -533,7 +535,6 @@ $adaptive-padding-side: 40px;
         .hamburger-label {
             width: 35px; 
             height: 25px;
-            // position: fixed;            
             z-index: 999;
             @include mixin.flex(column, center, space-between, 0);
         
@@ -559,7 +560,7 @@ $adaptive-padding-side: 40px;
         }
 
         #hamburger:checked ~ .nav-soc {
-            @include mixin.flex(row, center, center, 25px);
+            @include mixin.flex(row, flex-end, center, 25px);
             animation: show-hamburger 0.05s forwards linear;
         }
 
