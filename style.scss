@@ -747,7 +747,7 @@ $adaptive-padding-side: 40px;
 
     // Main. Section
     .features {
-        width: $adaptive-global-width - $adaptive-padding-side;
+        width: 100%;
         margin: 50px auto;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(2, auto);
@@ -775,7 +775,95 @@ $adaptive-padding-side: 40px;
 
 
     // Main. Section
+    .review {
+        width: $adaptive-global-width - $adaptive-padding-side;
+
+
+        &-header {
+            width: 100%;
+            margin: 0 auto 50px auto;
+            @include mixin.text-style(24px, 700, 26px, black);
+        }
+
+        &-card {
+            display: block;
+
+            & > div {
+                width: auto;
+            }
+
+            &-n {
+                & > p:nth-of-type(1) {
+                    width: 100%;
+                    margin-top: 15px;
+                }
+
+                & > p:nth-of-type(2) {
+                    margin: 10px auto;
+                }
+            }
+        }        
+    }
+
+
+    // Main. Section. Form
+    .form {
+        width: $adaptive-global-width - $adaptive-padding-side;
+        margin: 30px auto;
+
+        &-area {
+            max-width: none;
+            width: 100%;
+            gap: 15px;
+
+            & #first-name, #second-name {
+                width: 100%;
+            }
     
+            &-btn {
+                width: 150px;
+                height: 40px;
+            }
+        }        
+    }
+
+
+    // Footer
+    .footer {
+        width: $adaptive-global-width;
+        padding: 20px 0;
+
+        & .copyright {
+            margin-top: 35px;
+        }
+    }
+
+    .footer-content {
+        width: $adaptive-global-width - $adaptive-padding-side;
+        @include mixin.flex(column, center, flex-start, 30px);
+
+        &-left-soc {
+            margin-top: 20px;
+        }
+
+        &-right {
+            width: 100%;
+            justify-content: space-around;
+            gap: 0;
+
+            &-link {
+                margin-right: 0;
+
+                & li:first-of-type {
+                    margin-bottom: 0;
+                    text-decoration: underline;
+                }
+
+                
+                
+            }
+        }
+    }
     
 
 }   // End properties for adaptive layout

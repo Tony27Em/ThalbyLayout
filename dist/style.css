@@ -777,7 +777,7 @@
   }
 
   .features {
-    width: 335px;
+    width: 100%;
     margin: 50px auto;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, auto);
@@ -803,5 +803,79 @@
   .features-circle div {
     margin-top: 0;
     box-shadow: 0 0 15px #7a7a7a;
+  }
+
+  .review {
+    width: 335px;
+  }
+  .review-header {
+    width: 100%;
+    margin: 0 auto 50px auto;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 26px;
+    color: black;
+  }
+  .review-card {
+    display: block;
+  }
+  .review-card > div {
+    width: auto;
+  }
+  .review-card-n > p:nth-of-type(1) {
+    width: 100%;
+    margin-top: 15px;
+  }
+  .review-card-n > p:nth-of-type(2) {
+    margin: 10px auto;
+  }
+
+  .form {
+    width: 335px;
+    margin: 30px auto;
+  }
+  .form-area {
+    max-width: none;
+    width: 100%;
+    gap: 15px;
+  }
+  .form-area #first-name, .form-area #second-name {
+    width: 100%;
+  }
+  .form-area-btn {
+    width: 150px;
+    height: 40px;
+  }
+
+  .footer {
+    width: 375px;
+    padding: 20px 0;
+  }
+  .footer .copyright {
+    margin-top: 35px;
+  }
+
+  .footer-content {
+    width: 335px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 30px;
+  }
+  .footer-content-left-soc {
+    margin-top: 20px;
+  }
+  .footer-content-right {
+    width: 100%;
+    justify-content: space-around;
+    gap: 0;
+  }
+  .footer-content-right-link {
+    margin-right: 0;
+  }
+  .footer-content-right-link li:first-of-type {
+    margin-bottom: 0;
+    text-decoration: underline;
   }
 }
