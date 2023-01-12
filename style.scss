@@ -709,6 +709,73 @@ $adaptive-padding-side: 40px;
         }
     }
 
+
+    // Main. Section
+    .bestsellers-description-leftsided,
+    .bestsellers-description-rightsided {
+        width: $adaptive-global-width - $adaptive-padding-side;
+        display: block;
+        text-align: center;
+        padding: 25px 0;
+
+        & img {
+            width: 100%;
+        }
+
+        &-text {
+            & h3:first-of-type {
+                text-align: center;
+                margin-top: 5px;
+                @include mixin.text-style(24px, 700, 26px, black);
+            }
+
+            & p:first-of-type {
+                width: 100%;
+                text-align: center;
+                margin: 10px 0;
+                @include mixin.text-style(20px, 400, 22px, black);
+            }            
+        }
+    }
+
+    .bestsellers-description-rightsided {
+        &-text {
+            text-align: center;
+        }
+    }
+
+
+    // Main. Section
+    .features {
+        width: $adaptive-global-width - $adaptive-padding-side;
+        margin: 50px auto;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, auto);
+        gap: 20px;
+
+        &-header {
+            grid-area: 1/1/2/3;
+            padding-bottom: 20px;
+            @include mixin.text-style(24px, 400, 26px, black);
+        }
+
+        &-circle {
+            gap: 10px;
+
+            & p {
+                @include mixin.text-style(16px, 400, 18px, black);
+            }
+
+            & div {
+                margin-top: 0;
+                box-shadow: 0 0 15px rgb(122, 122, 122);
+            }
+        }        
+    }
+
+
+    // Main. Section
+    
     
 
 }   // End properties for adaptive layout
