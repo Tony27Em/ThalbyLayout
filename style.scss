@@ -151,6 +151,7 @@ $adaptive-padding-side: 40px;
         & input, label {
             display: none;
         }
+        //  -----
 
         &-n {
             width: min-content;
@@ -182,6 +183,12 @@ $adaptive-padding-side: 40px;
 .bestsellers-description-wrapper {
     width: 100%;
     background-color: rgba(204, 204, 204, 0.3);
+
+    // Скрыть для десктоп версии
+    & input, label {
+        display: none;
+    }
+    //  -----
 }
 
 .bestsellers-description-leftsided {
@@ -326,12 +333,19 @@ $adaptive-padding-side: 40px;
         width: 100%;
         padding-bottom: 52px;
         text-align: center;
+        position: relative;
         @include mixin.flex(row, center, space-between, 0);
+
+        // Скрыть для десктоп версии
+        & input, label {
+            display: none;
+        }
+        //  -----
 
         & > div {
             width: min-content;
         }
-
+        
         &-n {
             & > p:nth-of-type(1) {
                 width: 90%;
@@ -479,17 +493,18 @@ $adaptive-padding-side: 40px;
 
     .nav {
         width: $adaptive-global-width - $adaptive-padding-side;  
-        justify-content: space-between;    
+        @include mixin.flex(row, center, space-between, 0);  
                     
         .logo-image {
-            padding-right: 50px;
+            width: 100%;
+            @include mixin.flex(row, center, flex-end, 0);
         }
         
         .menu {
             width: 0;
             height: 100vh;
             display: none;
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             bottom: 0;
@@ -503,7 +518,7 @@ $adaptive-padding-side: 40px;
             width: 0;
             height: max-content;
             display: none;
-            position: absolute;
+            position: fixed;
             left: 0;
             bottom: 50px;
             background-color: transparent;            
@@ -517,7 +532,8 @@ $adaptive-padding-side: 40px;
 
         .hamburger-label {
             width: 35px; 
-            height: 25px;            
+            height: 25px;
+            // position: fixed;            
             z-index: 999;
             @include mixin.flex(column, center, space-between, 0);
         
@@ -531,6 +547,10 @@ $adaptive-padding-side: 40px;
 
         #hamburger {
             display: none;
+        }
+
+        #hamburger:checked + .hamburger-label {
+            position: fixed;
         }
 
         #hamburger:checked ~ .menu {
@@ -711,15 +731,107 @@ $adaptive-padding-side: 40px;
 
 
     // Main. Section
+    .bestsellers-description-wrapper {
+        position: relative;
+        display: flex;
+        justify-content: center;
+
+        & > div:nth-last-of-type(-n+2) {
+            position: absolute;
+            top: 0;
+        }
+
+        // Внешний вид и положение "кнопок навигации"
+        & label {
+            width: 50px;
+            height: 50px;
+            padding-left: 5px;
+
+            background-color: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
+            
+            border: 1px solid rgb(0, 0, 0);
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            position: absolute;
+            top: 40%;  
+            z-index: 10;   
+        }
+        & .label-21 {
+            left: 20px;
+            z-index: 9;
+            padding-left: 0;
+            padding-right: 5px;
+        }
+        & .label-22 {
+            right: 20px;
+            z-index: 10;
+        }
+        & .label-23 {
+            right: 20px;
+        }
+
+        // Условия и последующие действия при взаимодействии с "кнопками навигации"
+        #block-21:checked ~ .label-21 {
+            display: none;
+        }
+        #block-22:checked ~ .label-22 {
+            display: none;
+        }
+        #block-23:checked ~ .label-23 {
+            display: none;
+        }
+        #block-23:checked ~ .label-22 {
+            left: 20px;
+            transform: scaleX(-1);
+        }
+        #block-21:checked ~ div:nth-of-type(1) {
+            z-index: 8;
+            opacity: 1;
+            transform: scale(1);
+        }
+        #block-22:checked ~ div:nth-of-type(2) {
+            background-color: transparent;
+        }
+        #block-22:checked ~ div:nth-of-type(2) > div {
+            z-index: 8;
+            opacity: 1;
+            transform: scale(1);
+        }
+        #block-23:checked ~ div:nth-of-type(3) {
+            z-index: 8;
+            opacity: 1;
+            transform: scale(1);
+        }    
+        //  -----   
+    }
+
+    .bestseller-description-rightsided-wrapper {
+        width: 100%;   
+        
+        & .bestsellers-description-rightsided {
+            opacity: 0;
+            transition: 0.5s;
+            transform: scale(0.9);
+        }
+    }
+
     .bestsellers-description-leftsided,
     .bestsellers-description-rightsided {
         width: $adaptive-global-width - $adaptive-padding-side;
         display: block;
         text-align: center;
         padding: 25px 0;
+        opacity: 0;
+        transition: 0.5s;
+        transform: scale(0.9);
 
         & img {
-            width: 100%;
+            width: 92%;
         }
 
         &-text {
@@ -781,7 +893,7 @@ $adaptive-padding-side: 40px;
 
         &-header {
             width: 100%;
-            margin: 0 auto 50px auto;
+            margin: 0 auto 30px auto;
             @include mixin.text-style(24px, 700, 26px, black);
         }
 
@@ -792,7 +904,16 @@ $adaptive-padding-side: 40px;
                 width: auto;
             }
 
+            & > div:nth-last-of-type(-n+2) {
+                position: absolute;
+                top: 0;
+            }
+
             &-n {
+                opacity: 0;
+                transition: 0.5s;
+                transform: scale(0.9);
+
                 & > p:nth-of-type(1) {
                     width: 100%;
                     margin-top: 15px;
@@ -801,6 +922,70 @@ $adaptive-padding-side: 40px;
                 & > p:nth-of-type(2) {
                     margin: 10px auto;
                 }
+            }
+
+            // Внешний вид и положение "кнопок навигации"
+            & label {
+                width: 50px;
+                height: 50px;
+                padding-left: 5px;
+
+                background-color: rgba(255, 255, 255, 0.5);
+                backdrop-filter: blur(5px);
+                
+                border: 1px solid rgb(0, 0, 0);
+                border-radius: 50%;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                position: absolute;
+                top: 35%;  
+                z-index: 10;   
+            }
+            & .label-31 {
+                left: 0;
+                z-index: 9;
+                padding-left: 0;
+                padding-right: 5px;
+            }
+            & .label-32 {
+                right: 0;
+                z-index: 10;
+            }
+            & .label-33 {
+                right: 0;
+            }
+
+            // Условия и последующие действия при взаимодействии с "кнопками навигации"
+            #block-31:checked ~ .label-31 {
+                display: none;
+            }
+            #block-32:checked ~ .label-32 {
+                display: none;
+            }
+            #block-33:checked ~ .label-33 {
+                display: none;
+            }
+            #block-33:checked ~ .label-32 {
+                left: 0;
+                transform: scaleX(-1);
+            }
+            #block-31:checked ~ div:nth-of-type(1) {
+                z-index: 8;
+                opacity: 1;
+                transform: scale(1);
+            }
+            #block-32:checked ~ div:nth-of-type(2) {
+                z-index: 8;
+                opacity: 1;
+                transform: scale(1);
+            }
+            #block-33:checked ~ div:nth-of-type(3) {
+                z-index: 8;
+                opacity: 1;
+                transform: scale(1);
             }
         }        
     }
