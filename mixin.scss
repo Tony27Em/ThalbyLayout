@@ -1,0 +1,24 @@
+// Standart zeroing
+@mixin zeroing {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+// Flex style
+@mixin flex($direction, $align, $justify, $gap) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: $align;
+    justify-content: $justify;
+    gap: $gap;
+}
+
+// Properties for text
+@mixin text-style($font-size, $font-weight, $line-height, $color-text) {
+    font-size: $font-size;
+    font-weight: $font-weight;
+    line-height: $line-height;
+    color: $color-text;
+}

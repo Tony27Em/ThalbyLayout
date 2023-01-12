@@ -1,0 +1,714 @@
+@use 'mixin.scss';
+
+
+// Global variables
+$global-width: 1440px;
+$padding-side: 376px;
+$adaptive-global-width: 375px;
+$adaptive-padding-side: 40px;
+
+
+// Standart zeroing
+* {
+    @include mixin.zeroing();
+}
+
+
+// Header. Nav
+.header {
+    width: $global-width;
+    margin: auto;
+}
+
+.nav {
+    width: $global-width - $padding-side;
+    margin: auto;
+    padding: 16px 0;
+    @include mixin.flex(row, center, space-between, 0);
+
+    & > .hamburger-label, #hamburger {
+        display: none;
+    }
+
+    & > .menu {
+        width: 40%;
+        @include mixin.flex(row, center, flex-start, 30px);
+
+        & li {
+            list-style-type: none;
+
+            & a {
+                text-decoration: none;
+                @include mixin.text-style(16px, 700, 26px, black);
+
+                &:hover { text-decoration: underline;}
+            }
+        }
+    }
+
+    & > .logo-image {
+        width: 20%;
+        @include mixin.flex(row, center, center, 0);
+    }
+
+    & > .nav-soc {
+        width: 40%;
+        @include mixin.flex(row, center, flex-end, 27px);
+
+        & img {
+            cursor: pointer;
+        }
+    }
+}
+
+
+// Main. Section
+.main {
+    width: $global-width;
+    margin: auto;
+}
+
+.tagline-wrapper {
+    width: 100%;
+    background-color: #F0EFEB;
+}
+
+.tagline {
+    width: $global-width - $padding-side;
+    margin: auto;
+    padding: 9px 0 24px 0;
+    @include mixin.flex(row, center, space-between, 0);
+
+    &-left {
+        width: 50%;
+        @include mixin.flex(column, flex-start, center, 26px);
+
+        &-header {
+            padding-top: 10px;
+            @include mixin.text-style(60px, 700, 70px, black);
+        }
+
+        &-text {
+            padding-top: 16px;
+            @include mixin.text-style(24px, 400, 28px, black);
+        }
+
+        &-btn {
+            width: 129px;
+            height: 36px;
+            background-color: black;
+            border: 0;
+            border-radius: 100px;
+            cursor: pointer;
+            @include mixin.text-style(17px, 400, 20px, white);
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+
+// Main. Section
+.about {
+    width: 50%;
+    margin: 60px auto 88px auto;
+    text-align: center;
+
+    &-header {
+        @include mixin.text-style(36px, 700, 42px, black);
+    }
+
+    &-text {
+        width: 88%;
+        margin: 27px auto 42px auto;
+        @include mixin.text-style(20px, 400, 23px, black);
+    }
+
+    &-text-2 {
+        @include mixin.text-style(20px, 400, 23px, black);
+    }
+}
+
+
+// Main. Section
+.bestsellers {
+    width: $global-width - $padding-side;
+    margin: auto;
+    margin-bottom: 248px;
+
+    &-header {
+        text-align: center;
+        margin-bottom: 52px;
+        @include mixin.text-style(36px, 700, 42px, black);
+    }
+
+    &-cards {
+        @include mixin.flex(row, center, space-between, 0);
+
+        // Скрыть для десктоп версии
+        & input, label {
+            display: none;
+        }
+
+        &-n {
+            width: min-content;
+            @include mixin.flex(column, center, center, 0);
+
+            & p:nth-of-type(1) {
+                width: 50%;
+                text-align: center;
+                margin: 27px auto 17px auto;
+                @include mixin.text-style(17px, 700, 20px, black);
+            }
+
+            & p:nth-of-type(2) {
+                @include mixin.text-style(17px, 400, 20px, black);
+            }
+
+            & p:nth-of-type(3) {
+                text-decoration: underline;
+                margin-top: 10px;
+                cursor: pointer;
+                @include mixin.text-style(17px, 700, 20px, black);
+            }
+        }
+    }
+}
+
+
+// Main. Section
+.bestsellers-description-wrapper {
+    width: 100%;
+    background-color: rgba(204, 204, 204, 0.3);
+}
+
+.bestsellers-description-leftsided {
+    width: $global-width - $padding-side;
+    margin: auto;
+    padding: 73px 0 51px 0;
+    @include mixin.flex(row, center, flex-start, 50px);
+
+    &-text {
+        & h3:first-of-type {
+            @include mixin.text-style(36px, 700, 42px, black);
+        }
+
+        & p:first-of-type {
+            width: 85%;
+            margin: 31px 0 40px 0;
+            @include mixin.text-style(36px, 400, 42px, black);
+        }
+
+        & a {
+            text-decoration: underline;
+            cursor: pointer;
+            @include mixin.text-style(17px, 700, 20px, black);
+        }
+    }
+}
+
+.bestseller-description-rightsided-wrapper {
+    background-color: rgba(204, 204, 204, 0.6);
+}
+
+.bestsellers-description-rightsided {
+    width: $global-width - $padding-side;
+    margin: auto;
+    padding: 76px 0 51px 0;
+    @include mixin.flex(row-reverse, center, flex-start, 50px);
+
+    &-text {
+        text-align: end;
+
+        & h3:first-of-type {
+            margin-top: 28px;
+            @include mixin.text-style(36px, 700, 42px, black);
+        }
+
+        & p:first-of-type {
+            width: 80%;
+            margin: 31px 0 31px auto;
+            @include mixin.text-style(36px, 400, 42px, black);
+        }
+
+        & a {
+            text-decoration: underline;
+            cursor: pointer;
+            @include mixin.text-style(17px, 700, 20px, black);
+        }
+    }
+}
+
+
+// Main. Section
+.features {
+    width: $global-width - $padding-side;
+    margin: 190px auto 163px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, auto);
+    column-gap: 25px;
+    row-gap: 67px;
+
+    &-header {
+        grid-area: 1/1/2/4;
+        text-align: center;
+        @include mixin.text-style(36px, 400, 42px, black);
+    }
+
+    &-circle {
+        @include mixin.flex(column, center, center, 26px);
+
+        & div {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+        }
+    
+        & p {
+            text-align: center;
+            @include mixin.text-style(30px, 700, 35px, black);
+        }
+
+        &-1 {
+            margin-top: 5px;            
+            background-color: #21F7EC;
+        }
+
+        &-2 {
+            margin-top: 5px;            
+            background-color: #33D3BC;
+        }
+
+        &-3 {
+            margin-top: 5px;            
+            background-color: #18A5C6;
+        }
+
+        &-4 {
+            margin-top: 45px;            
+            background-color: #D38F62;
+        }
+
+        &-5 {
+            margin-top: 45px;            
+            background-color: #F94C43;
+        }
+
+        &-6 {
+            margin-top: 45px;            
+            background-color: #D399FF;
+        }
+    }
+}
+
+
+// Main. Section
+.review-wrapper {
+    width: 100%;
+    background: linear-gradient(to top, #F0F0F0 56.5%, transparent 44.5%);
+}
+
+.review {
+    width: $global-width - $padding-side;
+    margin: auto;
+
+    &-header {
+        width: 65%;
+        margin: 0 auto 102px auto;
+        text-align: center;
+        @include mixin.text-style(36px, 700, 42px, black);
+    }
+
+    &-card {
+        width: 100%;
+        padding-bottom: 52px;
+        text-align: center;
+        @include mixin.flex(row, center, space-between, 0);
+
+        & > div {
+            width: min-content;
+        }
+
+        &-n {
+            & > p:nth-of-type(1) {
+                width: 90%;
+                margin: auto;
+                margin-top: 35px;
+                letter-spacing: 0.6px;
+                @include mixin.text-style(23px, 700, 26px, black);
+            }
+
+            & > p:nth-of-type(2) {
+                margin: 40px auto 44px auto;
+                @include mixin.text-style (19px, 400, 22px, black);
+            }
+
+            & > a:only-of-type {
+                cursor: pointer;
+                @include mixin.text-style(18px, 700, 21px, black);
+            }
+        }
+    }
+}
+
+
+// Main. Section
+.form {
+    width: 32%;
+    margin: 79px auto 88px auto;
+    text-align: center;
+
+    &-header {
+        @include mixin.text-style(36px, 700, 42px, black);
+    }
+
+    &-text {
+        margin: 9px auto 26px auto;
+        @include mixin.text-style(17px, 700, 20px, black);
+    }
+
+    &-area {
+        max-width: 366px;
+        margin: auto;
+        @include mixin.flex(row, center, center, 60px);
+        flex-wrap: wrap;
+        row-gap: 16px;
+
+        & #first-name, #second-name {
+            width: 153px;
+            height: 39px;
+        }
+
+        & #email {
+            width: 100%;
+            height: 39px;
+        }
+
+        & input {
+            padding-left: 8px;
+        }
+
+        &-btn {
+            width: 115px;
+            height: 33px;
+            border: 0;
+            border-radius: 100px;
+            background-color: black;
+            cursor: pointer;
+            @include mixin.text-style(14px, 400, 16px, white);
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+
+// Footer
+.footer {
+    width: $global-width;
+    margin: auto;
+    padding: 51px 0 16px 0;
+    background-color: #020202;
+
+    & li {
+        list-style-type: none;
+    }
+
+    & a {
+        text-decoration: none;
+    }
+
+    & .copyright {
+        text-align: center;
+        margin-top: 18px;
+        @include mixin.text-style(14px, 400, 23px, white);
+    }
+}
+
+.footer-content {
+    width: $global-width - $padding-side;
+    margin: auto;
+    @include mixin.flex(row, flex-start, space-between, 0);
+    
+    &-left-soc {
+        margin-top: 35px;
+        @include mixin.flex(row, center, space-between, 0);
+
+        & img {
+            cursor: pointer;
+        }
+    }
+
+    &-right {
+        @include mixin.flex(row, flex-start, center, 58px);
+        @include mixin.text-style(14px, 400, 23px, white);
+
+        &-link {
+            margin-right: 20px;
+            @include mixin.flex(column, flex-start, flex-start, 11px);
+
+            & li:first-of-type {
+                margin-bottom: 25px;
+            }
+            
+            & a {
+                @include mixin.text-style(14px, 400, 23px, white);            
+            
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }    
+}
+
+
+
+// Adaptive website layout
+@media only screen and (max-width: 375px) {
+    
+    // Header. Nav
+    .header {
+        width: $adaptive-global-width;
+    }
+
+    .nav {
+        width: $adaptive-global-width - $adaptive-padding-side;  
+        justify-content: space-between;    
+                    
+        .logo-image {
+            padding-right: 50px;
+        }
+        
+        .menu {
+            width: 0;
+            height: 100vh;
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            padding: 70px 0 0 20px;            
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(20px);
+            z-index: 998;
+        }       
+
+        & .nav-soc {
+            width: 0;
+            height: max-content;
+            display: none;
+            position: absolute;
+            left: 0;
+            bottom: 50px;
+            background-color: transparent;            
+            backdrop-filter: blur(0);
+            z-index: 998;
+        }
+        
+        .menu li a {
+            white-space: nowrap;    //Запрет переноса слов для правильного отображения при раскрытии сайдбара
+        }
+
+        .hamburger-label {
+            width: 35px; 
+            height: 25px;            
+            z-index: 999;
+            @include mixin.flex(column, center, space-between, 0);
+        
+            & div {
+                width: 100%;
+                height: 5px;
+                background-color: #020202;
+                border-radius: 10px;
+            }
+        }    
+
+        #hamburger {
+            display: none;
+        }
+
+        #hamburger:checked ~ .menu {
+            @include mixin.flex(column, flex-start, flex-start, 10px);
+            animation: show-hamburger 0.05s forwards linear;
+        }
+
+        #hamburger:checked ~ .nav-soc {
+            @include mixin.flex(row, center, center, 25px);
+            animation: show-hamburger 0.05s forwards linear;
+        }
+
+        @keyframes show-hamburger {            
+            to {
+                width: 50%;
+                visibility: visible;
+            }
+        }       
+    }
+
+
+    // Main. Section
+    .main {
+        width: $adaptive-global-width;
+    }
+
+    .tagline-wrapper {        
+        background-color: transparent;        
+    }
+
+    .tagline {
+        width: $adaptive-global-width;
+        padding: 40px 0;
+        position: relative;
+
+        & img {
+            display: none;
+        }  
+
+        // Для полупрозрачного фона
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: url(../images/adaptive-header-img.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.5;
+        }
+
+        &-left {
+            width: 100%;
+            margin: 0 calc(#{$adaptive-padding-side}/2);    //Правило написания переменной в calc
+            align-items: center;
+
+            &-header {
+                text-align: center;
+            }
+
+            &-text {
+                text-align: center;
+            }
+        }                  
+    }
+
+
+    // Main. Section
+    .about {
+        width: $adaptive-global-width - $adaptive-padding-side;
+        margin: 50px auto;
+
+        &-text {
+            width: 100%;
+            margin: 20 auto;
+        }
+    }
+
+
+    // Main. Section
+    .bestsellers {
+        width: $adaptive-global-width - $adaptive-padding-side;
+        margin-bottom: 30px;
+
+        &-header {
+            margin-bottom: 20px;
+        }
+
+        &-cards {
+            width: 100%;
+            justify-content: center;
+            position: relative;
+
+            & > div:nth-last-of-type(-n+2) {
+                position: absolute;
+                top: 0;
+            }
+
+            // Первоначальная установка для карточек
+            &-n {
+                opacity: 0;
+                transition: 0.5s;
+                transform: scale(0.9);
+
+                & p:nth-of-type(1) {
+                    margin: 15px 0;
+                }
+            }
+
+            // Внешний вид и положение "кнопок навигации"
+            & label {
+                width: 50px;
+                height: 50px;
+                padding-left: 5px;
+
+                background-color: rgba(255, 255, 255, 0.5);
+                backdrop-filter: blur(5px);
+                
+                border: 1px solid rgb(0, 0, 0);
+                border-radius: 50%;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                position: absolute;
+                top: 41%;  
+                z-index: 10;   
+            }
+            & .label-1 {
+                left: 0;
+                z-index: 9;
+                padding-left: 0;
+                padding-right: 5px;
+            }
+            & .label-2 {
+                right: 0;
+                z-index: 10;
+            }
+            & .label-3 {
+                right: 0;
+            }
+
+            // Условия и последующие действия при взаимодействии с "кнопками навигации"
+            #block-1:checked ~ .label-1 {
+                display: none;
+            }
+            #block-2:checked ~ .label-2 {
+                display: none;
+            }
+            #block-3:checked ~ .label-3 {
+                display: none;
+            }
+            #block-3:checked ~ .label-2 {
+                left: 0;
+                transform: scaleX(-1);
+            }
+            #block-1:checked ~ div:nth-of-type(1) {
+                z-index: 8;
+                opacity: 1;
+                transform: scale(1);
+            }
+            #block-2:checked ~ div:nth-of-type(2) {
+                z-index: 8;
+                opacity: 1;
+                transform: scale(1);
+            }
+            #block-3:checked ~ div:nth-of-type(3) {
+                z-index: 8;
+                opacity: 1;
+                transform: scale(1);
+            }            
+        }
+    }
+
+    
+
+}   // End properties for adaptive layout
